@@ -74,9 +74,11 @@ function gameEngine() {
       x: snakeArr[0].x + inputDir.x,
       y: snakeArr[0].y + inputDir.y,
     });
+    let a = 2;
+    let b = 16;
     food = {
-      x: Math.round(16 * Math.random()),
-      y: Math.round(16 * Math.random()),
+      x: Math.round(a + (b - a) * Math.random()),
+      y: Math.round(a + (b - a) * Math.random()),
     };
   }
 
@@ -138,23 +140,20 @@ window.addEventListener("keydown", (e) => {
       break;
   }
 
-  document.onkeydown = checkKey;
-
-  function checkKey(e) {
-    e = e || window.event;
-
-    if (e.keyCode === 38) {
-      inputDir.x = 0;
-      inputDir.y = -1;
-    } else if (e.keyCode === 40) {
-      inputDir.x = 0;
-      inputDir.y = 1;
-    } else if (e.keyCode === 37) {
-      inputDir.x = -1;
-      inputDir.y = 0;
-    } else if (e.keyCode === 39) {
-      inputDir.x = 1;
-      inputDir.y = 0;
+  document.onkeydown = function (e) {
+    switch (e.keyCode) {
+      case 37:
+        alert("left");
+        break;
+      case 38:
+        alert("up");
+        break;
+      case 39:
+        alert("right");
+        break;
+      case 40:
+        alert("down");
+        break;
     }
-  }
+  };
 });
